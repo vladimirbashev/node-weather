@@ -12,21 +12,21 @@ const printSuccess = (message) => {
 const printHelp = () => {
 	console.log(
 		dedent`${chalk.bgCyan(' HELP ')}
-		Без параметров - вывод погоды
-		-s [CITY] для установки города
-		-h для вывода помощи
-		-t [API_KEY] для сохранения токена
+		No params - show weather
+		-s [CITY] to set a city
+		-h help
+		-t [API_KEY]to save a token
 		`
 	);
 };
 
 const printWeather = (res, icon) => {
 	console.log(
-		dedent`${chalk.bgYellow(' WEATHER ')} Погода в городе ${res.name}
+		dedent`${chalk.bgYellow(' WEATHER ')} Weather in ${res.name}
 		${icon}  ${res.weather[0].description}
-		Температура: ${res.main.temp} (ощущается как ${res.main.feels_like})
-		Влажность: ${res.main.humidity}%
-		Скорость ветра: ${res.wind.speed}
+		Temperature: ${res.main.temp} (feel like ${res.main.feels_like})
+		Humidity: ${res.main.humidity}%
+		Wind: ${res.wind.speed}
 		`
 	);
 };
