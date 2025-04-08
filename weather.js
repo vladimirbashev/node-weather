@@ -6,12 +6,12 @@ import { saveKeyValue, TOKEN_DICTIONARY, getKeyValue } from './services/storage.
 
 const saveToken = async (token) => {
 	if (!token.length) {
-		printError('Не передан token');
+		printError('Token not passed');
 		return;
 	}
 	try {
 		await saveKeyValue(TOKEN_DICTIONARY.token, token);
-		printSuccess('Токен сохранён');
+		printSuccess('Token saved');
 	} catch (e) {
 		printError(e.message);
 	}
@@ -19,12 +19,12 @@ const saveToken = async (token) => {
 
 const saveCity = async (city) => {
 	if (!city.length) {
-		printError('Не передан город');
+		printError('City not passed');
 		return;
 	}
 	try {
 		await saveKeyValue(TOKEN_DICTIONARY.city, city);
-		printSuccess('Город сохранён');
+		printSuccess('City saved');
 	} catch (e) {
 		printError(e.message);
 	}
@@ -36,10 +36,10 @@ const getForcast = async () => {
 		const weather = await getWeather(city);
 		printWeather(weather, getIcon(weather.weather[0].icon));
 	} catch (e) {
-		if (e?.response?.status == 404) {
-			printError('Неверно указан город');
-		} else if (e?.response?.status == 401) {
-			printError('Неверно указан токен');
+		if (e?.response?.status === 404) {
+			printError('Incorrect city');
+		} else if (e?.response?.status === 401) {
+			printError('Incorrect token');
 		} else {
 			printError(e.message);
 		}
