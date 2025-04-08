@@ -29,12 +29,11 @@ const getWeather = async (city) => {
 	if (!token) {
 		throw new Error('API key is not set, use -t [API_KEY]');
 	}
+
 	const { data } = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
 		params: {
 			q: city,
-			appid: token,
-			lang: 'ru',
-			units: 'metric'
+			appid: token
 		}
 	});
 	return data;
